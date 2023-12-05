@@ -1,0 +1,24 @@
+[
+  {
+    "Id": "e4520ca2-deb7-4a80-a42a-fe0935fb2fc0",
+    "FirstName": "Liv",
+    "LastName": "Bard",
+    "PhoneNumber": "1234536798",
+    "Email": "c",
+    "StreetName": "c",
+    "HouseNumber": "c",
+    "Postcode": "c",
+    "City": "c"
+  },
+  {
+    "Id": "c41eacf5-f8b8-40eb-bdb2-645aa3246342",
+    "FirstName": "Edith",
+    "LastName": "Bard",
+    "PhoneNumber": "987654321",
+    "Email": "eee",
+    "StreetName": "ddd",
+    "HouseNumber": "fff",
+    "Postcode": "bbb",
+    "City": "yyy"
+  }
+]
