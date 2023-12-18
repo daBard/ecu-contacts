@@ -1,8 +1,11 @@
 ﻿namespace Contacts_Console_App.Interfaces
 {
-    internal interface IFileService
+    /// <summary>
+    /// Interface for Service FileService
+    /// </summary>
+    public interface IFileService
     {
-        void SaveFile(string _content);
+        bool SaveFile(string _content);
         string LoadFile();
     }
 }

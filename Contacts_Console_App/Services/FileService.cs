@@ -4,24 +4,37 @@ using Contacts_Console_App.Interfaces;
 namespace Contacts_Console_App.Services
 {
 
-    internal class FileService : IFileService
+    public class FileService : IFileService
     {
-        private readonly string _filePath = @"C:\Users\bardj\Documents\GitHub\Contacts\Contacts_Console_App\ContactsFile\contacts.json";
+        // private readonly string _filePath = @"C:\Users\bardj\Documents\GitHub\Contacts\Contacts_Console_App\ContactsFile\contacts.json";
+        private readonly string _filePath = @"C:\temp\contacts.json";
 
-        //Save json string to json file
-        public void SaveFile(string _content)
+        /// <summary>
+        /// Save json string to json file
+        /// </summary>
+        /// <param name="_content"></param>
+        /// <returns> true if successful </returns>
+        public bool SaveFile(string _content)
         {
             try 
             {
                 using (var sw = new StreamWriter(_filePath))
                 {
                     sw.WriteLine(_content);
+                    return true;
                 }
             }
-            catch (Exception ex) { Debug.Write(ex.Message); }
+            catch (Exception ex) 
+            { 
+                Debug.Write(ex.Message);
+                return false;
+            }
         }
 
-        //Load json string from json file
+        /// <summary>
+        /// Load json string from json file
+        /// </summary>
+        /// <returns> json-string </returns>
         public string LoadFile()
         {
             try 
@@ -29,10 +42,7 @@ namespace Contacts_Console_App.Services
                 if(File.Exists(_filePath))
                     return File.ReadAllText(_filePath);
             }
-            catch (Exception ex)
-            { 
-                Debug.Write(ex.Message);
-            }
+            catch (Exception ex) { Debug.Write(ex.Message); }
             return null!;
         }
     }

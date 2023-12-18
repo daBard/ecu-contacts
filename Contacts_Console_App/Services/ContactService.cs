@@ -1,6 +1,7 @@
 ﻿using Contacts_Console_App.Repositories;
 
 using Contacts_Console_App.Models;
+using System.Diagnostics;
 
 namespace Contacts_Console_App.Services
 {
@@ -77,31 +78,38 @@ namespace Contacts_Console_App.Services
         //Display contact info and delete confirm
         public void DisplayContactInfo(int target)
         {
-            int i = target - 1;
+            int listCount = _contactRepository.GetAllContacts().Count();
 
-            Contact contact = _contactRepository.GetContact(i);
-
-            Console.WriteLine("Namn:");
-            Console.WriteLine($"{contact.FirstName} {contact.LastName}");
-
-            Console.WriteLine("Address:");
-            Console.WriteLine($"{contact.StreetName} {contact.HouseNumber}");
-            Console.WriteLine($"{contact.Postcode} {contact.City}");
-
-            Console.WriteLine("Phone number:");
-            Console.WriteLine($"{contact.PhoneNumber}");
-
-            Console.WriteLine("Email address:");
-            Console.WriteLine($"{contact.Email}");
-
-            Console.WriteLine("");
-            Console.WriteLine("Press D to delete the contact");
-            Console.WriteLine("or press any other key to return...");
-            string delOption = Console.ReadKey(true).KeyChar.ToString();
-            if (delOption.ToLower() == "d")
+            try
             {
-                DeleteContact(contact);
+                if (target > 0 && target <= listCount) {
+                    int i = target - 1;
+                    Contact contact = _contactRepository.GetContact(i);
+
+                    Console.WriteLine("Namn:");
+                    Console.WriteLine($"{contact.FirstName} {contact.LastName}");
+
+                    Console.WriteLine("Address:");
+                    Console.WriteLine($"{contact.StreetName} {contact.HouseNumber}");
+                    Console.WriteLine($"{contact.Postcode} {contact.City}");
+
+                    Console.WriteLine("Phone number:");
+                    Console.WriteLine($"{contact.PhoneNumber}");
+
+                    Console.WriteLine("Email address:");
+                    Console.WriteLine($"{contact.Email}");
+
+                    Console.WriteLine("");
+                    Console.WriteLine("Press D to delete the contact");
+                    Console.WriteLine("or press any other key to return...");
+                    string delOption = Console.ReadKey(true).KeyChar.ToString();
+                    if (delOption.ToLower() == "d")
+                    {
+                        DeleteContact(contact);
+                    }
+                }
             }
+            catch (Exception ex) { Debug.WriteLine(ex.Message); }  
         }
 
         //Pass through save command to repo

@@ -1,12 +1,17 @@
 ﻿using Contacts_Console_App.Models;
 
-namespace Contacts_Console_App.Repositories
+namespace Contacts_Console_App.Interfaces
 {
-    internal interface IContactRepository
+    /// <summary>
+    /// Interface for repository ContactRepository
+    /// </summary>
+    public interface IContactRepository
     {
-        void AddContact(Contact _contact);
-        void DeleteContact(Guid _id);
+        bool AddContact(Contact _contact);
+        bool DeleteContact(Guid _id);
         List<Contact> GetAllContacts();
         Contact GetContact(int _index);
+        bool LoadJsonToList();
+        bool ListToJsonSave();
     }
 }

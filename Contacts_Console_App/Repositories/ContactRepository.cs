@@ -5,10 +5,9 @@ using Contacts_Console_App.Models;
 using Contacts_Console_App.Services;
 using Contacts_Console_App.Interfaces;
 
-
 namespace Contacts_Console_App.Repositories
 {
-    internal class ContactRepository : IContactRepository
+    public class ContactRepository : IContactRepository
     {
         //Instantiate fileService 
         private readonly FileService _fileService;
@@ -24,23 +23,27 @@ namespace Contacts_Console_App.Repositories
         }
 
         // Add contact to list
-        public void AddContact(Contact _contact)
+        public bool AddContact(Contact _contact)
         {
             try
             {
                 _contactList.Add(_contact);
+                return true;
             }
             catch (Exception ex) { Debug.WriteLine(ex); }
+            return false;
         }
 
         // Delete contact from list
-        public void DeleteContact(Guid _id)
+        public bool DeleteContact(Guid _id)
         {
             try
             {
-                _contactList.RemoveAll(predicate => predicate.Id == _id);
+                _contactList.RemoveAll(predicate => predicate.Id== _id);
+                return true;
             }
             catch (Exception ex) { Debug.WriteLine(ex.Message); }
+            return false;
         }
 
         public Contact GetContact(int _index)
@@ -60,14 +63,21 @@ namespace Contacts_Console_App.Repositories
         }
 
         //From list to json and save to file
-        internal void ListToJsonSave()
+        public bool ListToJsonSave()
         {
-            string json = JsonConvert.SerializeObject(_contactList, Formatting.Indented);
-            _fileService.SaveFile(json);
+            try
+            {
+                string json = JsonConvert.SerializeObject(_contactList, Formatting.Indented);
+                _fileService.SaveFile(json);
+                return true;
+            }
+            catch(Exception ex) { Debug.WriteLine(ex.Message); } 
+            return false;
+            
         }
 
         //Load from file and from json to list
-        internal void LoadJsonToList()
+        public bool LoadJsonToList()
         {
             try
             {
@@ -76,9 +86,10 @@ namespace Contacts_Console_App.Repositories
                 {
                     _contactList = JsonConvert.DeserializeObject<List<Contact>>(json)!;
                 }
-
+                return true;
             }
             catch (Exception ex) { Debug.WriteLine(ex.Message); }
+            return false;
         }
     }
 }

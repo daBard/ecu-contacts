@@ -1,8 +1,11 @@
 ﻿namespace Contacts_Console_App.Interfaces
 {
-    internal interface IContact
+    /// <summary>
+    /// Interface for Model contact information shared by different contact types
+    /// </summary>
+    public interface IContact
     {
-        //Guid Id { get; }
+        Guid Id { get; }
         string PhoneNumber { get; set; }
         string Email { get; set; }
         string StreetName { get; set; }

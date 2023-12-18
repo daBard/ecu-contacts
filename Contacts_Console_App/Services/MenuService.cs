@@ -50,7 +50,7 @@ internal class MenuService(ContactService _contactService, UtilService _utilServ
                 }
                 else
                 {
-                    Console.WriteLine("Not a valid item.");
+                    Console.WriteLine("Not a valid option.");
                     Console.ReadKey();
                 }
                 break;
