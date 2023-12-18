@@ -115,7 +115,10 @@ namespace Contacts_Console_App.Services
         //Pass through save command to repo
         public void Save()
         {
-            _contactRepository.ListToJsonSave();
+            Console.Write("Saving to file... ");
+            bool res = _contactRepository.ListToJsonSave();
+            if (res) { Console.Write("Saved!"); }
+            else { Console.Write("Failed!"); }
         }
     }
 }

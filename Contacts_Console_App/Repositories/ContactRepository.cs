@@ -68,8 +68,9 @@ namespace Contacts_Console_App.Repositories
             try
             {
                 string json = JsonConvert.SerializeObject(_contactList, Formatting.Indented);
-                _fileService.SaveFile(json);
-                return true;
+                bool res = _fileService.SaveFile(json);
+                if(res)
+                    return true;
             }
             catch(Exception ex) { Debug.WriteLine(ex.Message); } 
             return false;

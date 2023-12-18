@@ -6,8 +6,7 @@ namespace Contacts_Console_App.Services
 
     public class FileService : IFileService
     {
-        // private readonly string _filePath = @"C:\Users\bardj\Documents\GitHub\Contacts\Contacts_Console_App\ContactsFile\contacts.json";
-        private readonly string _filePath = @"C:\temp\contacts.json";
+        private readonly string _filePath = Path.Combine(Directory.GetCurrentDirectory(), @"contacts.json");
 
         /// <summary>
         /// Save json string to json file

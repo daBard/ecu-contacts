@@ -57,13 +57,15 @@ internal class MenuService(ContactService _contactService, UtilService _utilServ
 
             case "3":
                 _contactService.Save();
-                Console.WriteLine("Contact file saved...");
                 Console.ReadKey();
                 break;
             case "0":
                 Console.WriteLine("Exit app");
                 if (_utilService.AreYouSure())
+                {
+                    _contactService.Save();
                     Environment.Exit(0);
+                }
                 break;
             default:
                 Console.WriteLine("Not a valid option.");
