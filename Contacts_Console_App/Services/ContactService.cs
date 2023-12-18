@@ -108,6 +108,11 @@ namespace Contacts_Console_App.Services
                         DeleteContact(contact);
                     }
                 }
+                else 
+                { 
+                    Console.WriteLine("Not a valid contact.");
+                    Console.ReadKey();
+                }
             }
             catch (Exception ex) { Debug.WriteLine(ex.Message); }  
         }
