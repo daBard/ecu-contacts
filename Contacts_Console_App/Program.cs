@@ -1,7 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-using Contacts_Console_App.Repositories;
+using ClassLibrary.Repositories;
+using ClassLibrary.Services;
 using Contacts_Console_App.Services;
 
 var builder = Host.CreateDefaultBuilder().ConfigureServices(services =>

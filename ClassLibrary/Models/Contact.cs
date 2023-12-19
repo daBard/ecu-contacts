@@ -1,9 +1,10 @@
-﻿using Contacts_Console_App.Interfaces;
+﻿using ClassLibrary.Interfaces;
 
-namespace Contacts_Console_App.Models;
+namespace ClassLibrary.Models;
 
 /// <summary>
 ///  Model for Contact uses interfaces
+///  GUID set by constructor
 /// </summary>
 public class Contact : IContact, IPerson
 {
