@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using ClassLibrary.Repositories;
+using ClassLibrary.Services;
+using Microsoft.Extensions.Logging;
 
 namespace ContactsVisualApp
 {
@@ -15,8 +17,11 @@ namespace ContactsVisualApp
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
+            builder.Services.AddSingleton<ContactRepository>();
+            builder.Services.AddSingleton<FileService>();
+
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
 
             return builder.Build();

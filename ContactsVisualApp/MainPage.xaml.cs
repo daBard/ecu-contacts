@@ -37,6 +37,7 @@ namespace ContactsVisualApp
 
             SemanticScreenReader.Announce(CounterBtn.Text);
         }
+
     }
 
 }

@@ -5,7 +5,8 @@ namespace ClassLibrary.Services;
 
 public class FileService : IFileService
 {
-    private readonly string _filePath = Path.Combine(Directory.GetCurrentDirectory(), @"contacts.json");
+    private readonly string _filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), @"contacts.json");
+    //private readonly string _filePath = Path.Combine(Directory.GetCurrentDirectory(), @"contacts.json");
 
     public bool SaveFile(string _content)
     {
