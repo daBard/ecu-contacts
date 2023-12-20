@@ -1,4 +1,4 @@
-﻿namespace ClassLibrary.Interface;
+﻿namespace ClassLibrary.Interfaces;
 
 /// <summary>
 /// NOT USED
